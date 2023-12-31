@@ -9,7 +9,7 @@ for _, gui in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
 end
 
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 700, 0, 200)
+frame.Size = UDim2.new(0, 500, 0, 200)
 frame.BackgroundColor3 = Color3.fromRGB(128, 128, 128)
 frame.BackgroundTransparency = 0.5
 frame.Parent = screenGui
@@ -58,8 +58,22 @@ closeButton.MouseButton1Click:Connect(function()
     screenGui.Enabled = false
 end)
 
+local copyButton = Instance.new("TextButton")
+copyButton.Size = UDim2.new(0, 30, 0, 30)
+copyButton.Position = UDim2.new(1, -30, 0, 0)
+copyButton.Text = "C"
+copyButton.Parent = textBox
+
+copyButton.MouseButton1Click:Connect(function()
+    setclipboard(textBox.Text)
+end)
+
+
 game:GetService("UserInputService").InputBegan:Connect(function(input)
     if input.KeyCode == Enum.KeyCode.LeftControl then
         screenGui.Enabled = not screenGui.Enabled
     end
 end)
+
+
+
